@@ -4,12 +4,12 @@ function="install"
 source="false"
 
 # Options
-. <(wget -qO- https://raw.githubusercontent.com/YaroslavShl/LogoProMint/main/LogoProMint.sh) --
+. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/colors.sh) --
 option_value(){ echo "$1" | sed -e 's%^--[^=]*=%%g; s%^-[^=]*=%%g'; }
 while test $# -gt 0; do
 	case "$1" in
 	-h|--help)
-		. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/logo.sh)
+		. <(wget -qO- https://raw.githubusercontent.com/YaroslavShl/LogoProMint/main/LogoProMint.sh)
 		echo
 		echo -e "${C_LGn}Functionality${RES}: the script performs many actions related to a Massa node"
 		echo
