@@ -9,7 +9,7 @@ option_value(){ echo "$1" | sed -e 's%^--[^=]*=%%g; s%^-[^=]*=%%g'; }
 while test $# -gt 0; do
 	case "$1" in
 	-h|--help)
-		. <(wget -qO- https://raw.githubusercontent.com/YaroslavShl/LogoProMint/main/LogoProMint.sh)
+		. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/logo.sh)
 		echo
 		echo -e "${C_LGn}Functionality${RES}: the script performs many actions related to a Massa node"
 		echo
@@ -71,7 +71,6 @@ update() {
 		printf "[Unit]
 Description=Massa Node
 After=network-online.target
-
 [Service]
 User=$USER
 WorkingDirectory=$HOME/massa/massa-node
@@ -79,7 +78,6 @@ ExecStart=$HOME/massa/massa-node/massa-node
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 		sudo systemctl enable massad
@@ -93,14 +91,11 @@ WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 		. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/logo.sh)
 		printf_n "
 The node was ${C_LGn}updated${RES}.
-
 \tv ${C_LGn}Useful commands${RES} v
-
 To run a client: ${C_LGn}massa_client${RES}
 To view the node status: ${C_LGn}sudo systemctl status massad${RES}
 To view the node log: ${C_LGn}massa_log${RES}
 To restart the node: ${C_LGn}sudo systemctl restart massad${RES}
-
 CLI client commands (use ${C_LGn}massa_cli_client -h${RES} to view the help page):
 ${C_LGn}`compgen -a | grep massa_ | sed "/massa_log/d"`${RES}
 "
@@ -126,7 +121,6 @@ install() {
 			printf "[Unit]
 Description=Massa Node
 After=network-online.target
-
 [Service]
 User=$USER
 WorkingDirectory=$HOME/massa/massa-node
@@ -134,7 +128,6 @@ ExecStart=$HOME/massa/massa-node/massa-node
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 			sudo systemctl enable massad
@@ -159,17 +152,13 @@ WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 			. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/logo.sh)
 			printf_n "
 The node was ${C_LGn}started${RES}.
-
 Remember to save files in this directory:
 ${C_LR}$HOME/massa_backup/${RES}
-
 \tv ${C_LGn}Useful commands${RES} v
-
 To run a client: ${C_LGn}massa_client${RES}
 To view the node status: ${C_LGn}sudo systemctl status massad${RES}
 To view the node log: ${C_LGn}massa_log${RES}
 To restart the node: ${C_LGn}sudo systemctl restart massad${RES}
-
 CLI client commands (use ${C_LGn}massa_cli_client -h${RES} to view the help page):
 ${C_LGn}`compgen -a | grep massa_ | sed "/massa_log/d"`${RES}
 "
@@ -196,7 +185,6 @@ install_source() {
 		printf "[Unit]
 Description=Massa Node
 After=network-online.target
-
 [Service]
 User=$USER
 WorkingDirectory=$HOME/massa/massa-node
@@ -204,7 +192,6 @@ ExecStart=$HOME/massa/target/release/massa-node
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/massad.service
 		sudo systemctl enable massad
@@ -223,17 +210,13 @@ ${C_LGn}Client installation...${RES}
 	. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/logo.sh)
 	printf_n "
 The node was ${C_LGn}started${RES}.
-
 Remember to save files in this directory:
 ${C_LR}$HOME/massa_backup/${RES}
-
 \tv ${C_LGn}Useful commands${RES} v
-
 To run a client: ${C_LGn}massa_client${RES}
 To view the node status: ${C_LGn}sudo systemctl status massad${RES}
 To view the node log: ${C_LGn}massa_log${RES}
 To restart the node: ${C_LGn}sudo systemctl restart massad${RES}
-
 CLI client commands (use ${C_LGn}massa_cli_client -h${RES} to view the help page):
 ${C_LGn}`compgen -a | grep massa_ | sed "/massa_log/d"`${RES}
 "
